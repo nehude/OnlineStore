@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.Cart.Cart;
+import src.main.java.org.example.Product.Product;
+
+
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Cart cart = new Cart();
+
         ArrayList<Product> productlist = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -23,10 +30,10 @@ public class Main {
 
                 switch (choice) {
                     case 1:
-                        displayProduct(productlist);
+                        displayProduct(productlist, cart);
                         break;
                     case 2:
-                        // display cart method here
+                        displayCartMenu(cart);
                         break;
                     case 3:
                         System.out.println("We hope you come back soon! Thank you.");
@@ -42,7 +49,37 @@ public class Main {
         }
     }
 
-    public static void displayProduct(ArrayList<Product> productlist) {
+    public static void displayCartMenu(Cart cart) {
+        if (cart.isEmpty()) {
+            System.out.println("You don't have anything in your cart!");
+            System.out.println("Add some items to your cart first");
+            return;
+        }
+        Scanner scan = new Scanner(System.in);
+        int option;
+        do {
+            cart.displayItems();
+            System.out.println("[1] - Check out");
+            System.out.println("[2] - Remove Item");
+            System.out.println("[3] - Go Back");
+            option = scan.nextInt();
+            scan.nextLine();
+            switch (option) {
+                case 1 -> {
+                    System.out.println("Thanks for shopping with us!");
+                    System.exit(0);
+                }
+                case 2 -> {
+                    System.out.println("Please enter the SKU of what you want to remove:");
+                    String sku = scan.nextLine();
+                    cart.removeItem(sku);
+                }
+                default -> {}
+            }
+        } while (option != 3);
+    }
+
+    public static void displayProduct(ArrayList<Product> productlist, Cart cart) {
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/Products.csv");
             Scanner scanner = new Scanner(fis);
@@ -82,7 +119,10 @@ public class Main {
                         inputScanner.nextLine();
 
                         if (choice == 1) {
+                            cart.addItem(product);
+
                             addToCart(product);
+                            // ^ deprecated
                             System.out.println("Product added to cart!");
                         }
                         else {

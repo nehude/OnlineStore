@@ -1,4 +1,4 @@
-package org.example;
+package src.main.java.org.example.Product;
 
 public class Product {
     public String SKU;
