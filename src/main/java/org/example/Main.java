@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Product[] products = new Product[12];
 
         products[0] = new Product("AV1051", "JBL Bluetooth Speaker", 89.95, "Audio Video");
@@ -52,6 +53,7 @@ public class Main {
             }       catch (Exception ex) {
 
             }
+
 
         }
     }
