@@ -24,11 +24,11 @@ public class Product {
         this.SKU = SKU;
     }
 
-    public String getProductname() {
+    public String getProductName() {
         return productname;
     }
 
-    public void setProductname(String productname) {
+    public void setProductName(String productname) {
         this.productname = productname;
     }
 
