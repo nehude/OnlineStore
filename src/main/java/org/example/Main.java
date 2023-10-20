@@ -29,10 +29,11 @@ public class Main {
 
                 switch (choice) {
                     case 1:
-                        displayProduct(productlist);
+                        displayProduct(productlist, cart);
                         break;
                     case 2:
                         // display cart method here
+                        cart.displayItems();
                         break;
                     case 3:
                         System.out.println("We hope you come back soon! Thank you.");
@@ -48,7 +49,7 @@ public class Main {
         }
     }
 
-    public static void displayProduct(ArrayList<Product> productlist) {
+    public static void displayProduct(ArrayList<Product> productlist, Cart cart) {
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/Products.csv");
             Scanner scanner = new Scanner(fis);
@@ -88,7 +89,10 @@ public class Main {
                         inputScanner.nextLine();
 
                         if (choice == 1) {
+                            cart.addItem(product);
+
                             addToCart(product);
+                            // ^ deprecated
                             System.out.println("Product added to cart!");
                         }
                         else {
