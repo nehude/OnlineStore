@@ -1,13 +1,13 @@
-package src.main.java.org.example;
+package src.main.java.org.example.Cart;
 
 import java.util.ArrayList;
-import org.example.Product;
+import src.main.java.org.example.Product.Product;
 
 public class Cart {
     private ArrayList<Product> productList;
 
-    public Cart(ArrayList<Product> productList) {
-        this.productList = productList;
+    public Cart() {
+        this.productList = new ArrayList<Product>();
     }
 
     public ArrayList<Product> getProductList() {

@@ -1,5 +1,8 @@
 package org.example;
 
+import src.main.java.org.example.Product.Product;
+import src.main.java.org.example.Cart.Cart;
+
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -7,6 +10,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Cart cart = new Cart();
+
         ArrayList<Product> productlist = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
