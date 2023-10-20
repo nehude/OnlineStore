@@ -1,7 +1,8 @@
 package org.example.Cart;
 
+import org.example.Product.Product;
+
 import java.util.ArrayList;
-import src.main.java.org.example.Product.Product;
 
 public class Cart {
     private ArrayList<Product> productList;

@@ -1,8 +1,7 @@
 package org.example;
 
 import org.example.Cart.Cart;
-import src.main.java.org.example.Product.Product;
-
+import org.example.Product.Product;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
