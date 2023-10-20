@@ -26,9 +26,10 @@ public class Cart {
 
     public void removeItem(String sku) {
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).SKU == sku) {
-                productList.remove(i);
+            if (productList.get(i).SKU.equalsIgnoreCase(sku)) {
                 this.total -= productList.get(i).price;
+                System.out.println("Removing " + productList.get(i) + " from cart.");
+                productList.remove(i);
                 break;
             }
         }

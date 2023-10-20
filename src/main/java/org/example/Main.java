@@ -34,6 +34,7 @@ public class Main {
                         break;
                     case 2:
                         displayCartMenu(cart);
+                        break;
                     case 3:
                         System.out.println("We hope you come back soon! Thank you.");
                         System.exit(0);
@@ -66,6 +67,7 @@ public class Main {
             switch (option) {
                 case 1 -> {
                     System.out.println("Thanks for shopping with us!");
+                    System.exit(0);
                 }
                 case 2 -> {
                     System.out.println("Please enter the SKU of what you want to remove:");
