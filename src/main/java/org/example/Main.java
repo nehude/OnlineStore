@@ -1,7 +1,8 @@
 package org.example;
 
+import org.example.Cart.Cart;
 import src.main.java.org.example.Product.Product;
-import src.main.java.org.example.Cart.Cart;
+
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -32,9 +33,7 @@ public class Main {
                         displayProduct(productlist, cart);
                         break;
                     case 2:
-                        // display cart method here
-                        cart.displayItems();
-                        break;
+                        displayCartMenu(cart);
                     case 3:
                         System.out.println("We hope you come back soon! Thank you.");
                         System.exit(0);
@@ -47,6 +46,35 @@ public class Main {
                 scanner.nextLine();
             }
         }
+    }
+
+    public static void displayCartMenu(Cart cart) {
+        if (cart.isEmpty()) {
+            System.out.println("You don't have anything in your cart!");
+            System.out.println("Add some items to your cart first");
+            return;
+        }
+        Scanner scan = new Scanner(System.in);
+        int option;
+        do {
+            cart.displayItems();
+            System.out.println("[1] - Check out");
+            System.out.println("[2] - Remove Item");
+            System.out.println("[3] - Go Back");
+            option = scan.nextInt();
+            scan.nextLine();
+            switch (option) {
+                case 1 -> {
+                    System.out.println("Thanks for shopping with us!");
+                }
+                case 2 -> {
+                    System.out.println("Please enter the SKU of what you want to remove:");
+                    String sku = scan.nextLine();
+                    cart.removeItem(sku);
+                }
+                default -> {}
+            }
+        } while (option != 3);
     }
 
     public static void displayProduct(ArrayList<Product> productlist, Cart cart) {
